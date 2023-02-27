@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import { GlobalStyle } from 'components/constants/GlobalStyle';
 import { Layout } from 'components/layout/Layout';
-import { ContactForm } from '../contactForm/ContactForm';
+import { ContactForm } from 'components/contactForm/ContactForm';
 import { ContactList } from 'components/contactList/ContactList';
 import { Filter } from 'components/filter/Filter';
 import { MainTitle, Phonebook, SecondTitle } from './App.styled';
@@ -65,7 +65,7 @@ export class App extends Component {
       <Layout>
         <Phonebook>
           <MainTitle>Phonebook</MainTitle>
-          <ContactForm onSubmit={this.addContact}></ContactForm>
+          <ContactForm onSubmitForm={this.addContact}></ContactForm>
           <SecondTitle>Contacts</SecondTitle>
           <Filter value={filter} onChange={this.changeFilter} />
           {contacts.length <= 0 ? (
