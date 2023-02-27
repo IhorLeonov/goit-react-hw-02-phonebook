@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ButtonDelete, Item } from './ContactItemqwe.styled';
+import { ButtonDelete, Item } from './ContactItem.styled';
 
 export const ContactItem = ({ id, name, number, onDelete }) => {
   return (
