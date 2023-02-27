@@ -11,13 +11,13 @@ export const GlobalStyle = createGlobalStyle`
   -moz-osx-font-smoothing: grayscale;
 }
 
-:root {
-  /* --bg-color: rgba(233, 236, 240, 0.78);
+/* :root {
+  --bg-color: rgba(233, 236, 240, 0.78);
   --bd-color: rgba(224, 227, 230, 0.78);
   --font-color: rgb(126, 124, 124);
   --green-color: rgb(169, 251, 46);
-  --red-color: rgb(241, 14, 14); */
-}
+  --red-color: rgb(241, 14, 14);
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

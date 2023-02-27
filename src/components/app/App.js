@@ -1,10 +1,12 @@
+import { nanoid } from 'nanoid';
+import { Component } from 'react';
 import { GlobalStyle } from 'components/constants/GlobalStyle';
 import { Layout } from 'components/layout/Layout';
-import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
-import { ContactForm } from './contactForm/ContactForm';
+import { ContactForm } from '../contactForm/ContactForm';
 import { ContactList } from 'components/contactList/ContactList';
 import { Filter } from 'components/filter/Filter';
+import { MainTitle, Phonebook, SecondTitle } from './App.styled';
+import { Notification } from 'components/notification/Notification';
 
 export class App extends Component {
   state = {
@@ -37,6 +39,12 @@ export class App extends Component {
     }
   };
 
+  deleteContact = deleteId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== deleteId),
+    }));
+  };
+
   changeFilter = e => {
     this.setState({ filter: e.currentTarget.value });
   };
@@ -51,16 +59,26 @@ export class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { filter, contacts } = this.state;
     const filtredContacts = this.getFiltredContacts();
     return (
       <Layout>
-        <h1>Phonebook</h1>
-        <ContactForm onSubmit={this.addContact}></ContactForm>
-        <h2>Contacts</h2>
-        <Filter value={filter} onChange={this.changeFilter} />
-        <ContactList contacts={filtredContacts} />
-        <GlobalStyle />
+        <Phonebook>
+          <MainTitle>Phonebook</MainTitle>
+          <ContactForm onSubmit={this.addContact}></ContactForm>
+          <SecondTitle>Contacts</SecondTitle>
+          <Filter value={filter} onChange={this.changeFilter} />
+          {contacts.length <= 0 ? (
+            <Notification message={'Phonebook is empty!'} />
+          ) : (
+            <ContactList
+              contacts={filtredContacts}
+              onDelete={this.deleteContact}
+            />
+          )}
+
+          <GlobalStyle />
+        </Phonebook>
       </Layout>
     );
   }
