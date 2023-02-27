@@ -1,21 +1,31 @@
 import styled from 'styled-components';
+import {
+  Form as FormikForm,
+  Field as FormikField,
+  ErrorMessage as FormikError,
+} from 'formik';
 
-export const AddContactsForm = styled.form`
+export const Form = styled(FormikForm)`
   margin-top: 15px;
   border-radius: 5px;
 `;
 
-export const Label = styled.label`
+export const FormLabel = styled.label`
   display: block;
   :nth-child(2) {
     margin-top: 10px;
   }
 `;
 
-export const Field = styled.input`
+export const Field = styled(FormikField)`
   display: block;
   margin-top: 10px;
   width: 100%;
+`;
+
+export const ErrorMessage = styled(FormikError)`
+  margin-top: 10px;
+  color: red;
 `;
 
 export const ButtonSubmit = styled.button`
